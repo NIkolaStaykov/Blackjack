@@ -10,9 +10,9 @@ class Player():
         values = []
         aces = my_cards.count('A')
         if aces == 1:
-            hard = False
+            hard = 0
         else:
-            hard = True
+            hard = 1
         for card in my_cards:
             values.append(self.determine_value(card))        
             
@@ -97,7 +97,7 @@ class Player():
                 return "stand"
             
         elif(hard == 0): 
-            
+            print("\n " + str(power))
             if(power in range(13, 15)):
                 if(dealer_card in range(5, 7)):
                     if(len(my_cards) == 2):
@@ -156,7 +156,7 @@ class Player():
         value = 0
         aces = 0
         for card in hand:
-            if card in self.deck.face_cards:
+            if card in ["J", "Q", "K"]:
                 value = value + 10
             elif card == 'A':
                 value = value + 11
@@ -164,7 +164,7 @@ class Player():
             else:
                 value = value + int(card)
         while (value > 21 and aces > 0):
-            value = value - 11
+            value = value - 10
             aces = aces -1
         return value
 
