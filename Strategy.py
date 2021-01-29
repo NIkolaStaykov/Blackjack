@@ -7,15 +7,21 @@ class Player():
         self.bankroll = bankroll 
 
     def choose_action(self, my_cards, dealer_card):
-        values = []
-        aces = my_cards.count('A')
-        if aces == 1:
-            hard = 0
-        else:
-            hard = 1
+        values = []  
+        hard = 1
+       
+       
         for card in my_cards:
             values.append(self.determine_value(card))        
-            
+        
+        softsum = sum(values)-10*values.count(11)
+        if "A" in my_cards:
+            if softsum < 11:
+                hard = 0
+            else:
+                hard = 1
+        
+        
         dealer_card = self.determine_value(dealer_card)
         power = self.hand_to_value(my_cards)
         
@@ -97,7 +103,7 @@ class Player():
                 return "stand"
             
         elif(hard == 0): 
-            print("\n " + str(power))
+            
             if(power in range(13, 15)):
                 if(dealer_card in range(5, 7)):
                     if(len(my_cards) == 2):
