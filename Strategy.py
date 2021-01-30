@@ -5,7 +5,10 @@
 class Player():
     def __init__(self, bankroll):
         self.bankroll = bankroll 
-
+        self.blackjacks = 0
+        self.wins = 0
+        self.draws = 0
+        self.loses = 0
     def choose_action(self, my_cards, dealer_card):
         values = []  
         hard = 1
