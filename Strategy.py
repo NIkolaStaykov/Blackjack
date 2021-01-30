@@ -108,6 +108,23 @@ class Player():
         elif(hard == 0): 
             
             if(power in range(13, 15)):
+                if(dealer_card == 6):
+                    if(len(my_cards) == 2):
+                        return "double"
+                    else:
+                        return "hit"
+                else:
+                    return "hit"
+            elif(power == 14):
+                if(dealer_card == 5):
+                    if(len(my_cards) == 2):
+                        return "double"
+                    else:
+                        return "hit"
+                else:
+                    return "hit"    
+                
+            elif(power in range(15, 17)):
                 if(dealer_card in range(5, 7)):
                     if(len(my_cards) == 2):
                         return "double"
@@ -115,9 +132,8 @@ class Player():
                         return "hit"
                 else:
                     return "hit"
-                
-            elif(power in range(15, 17)):
-                if(dealer_card in range(4, 7)):
+            elif(power == 16):
+                if(dealer_card == 4):
                     if(len(my_cards) == 2):
                         return "double"
                     else:
